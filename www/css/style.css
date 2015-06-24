@@ -2,3 +2,7 @@
 body > md-toolbar > div > h2 > span {
     color: #FFFFFF;
 }
+
+md-list > md-list-item > button {
+    display: block !important;
+}

@@ -31,8 +31,24 @@ angular.module( 'stash' )
         }
 
         function text ( msgData ) {
-          // DEBUG: remove this
-          console.log( msgData );
+            return $http.post( 'http://stash.everchain.com/v1/messages/send/text', {
+                message_type: 1,
+                strength: 3,
+                recipientEmail: msgData.recipient,
+                message: msgData.msg
+            } ).then( function ( response ) {
+              //TODO: pubsub message and handle error
+                return response;
+            });
+        }
+
+        function remove ( msgID ) {
+            return $http.post( 'http://stash.everchain.com/v1/messages/' + msgID + '/remove', {
+                messageId: msgID
+            } ).then( function ( response ) {
+              return response;
+                //TODO: pubsub message and handle error
+            })
         }
 
         return {
@@ -40,6 +56,7 @@ angular.module( 'stash' )
             list: list,
             getMessage: getMessage,
             text: text,
+            remove: remove,
             data: data
         }
 })

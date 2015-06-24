@@ -20,7 +20,7 @@
 
             // if the user is logged in, redirect straight to the start page
             if ( Auth.data.bLoggedIn ) {
-                $state.go( 'conversations' );
+                $state.go( 'messageList' );
             }
 
             // empty the login form
@@ -34,7 +34,7 @@
 
             function doLogin() {
                 Auth.authenticate( vm.oLoginData ).then( function () {
-                    $state.go( 'conversations' );
+                    $state.go( 'messageList' );
                 }, function ( err ) {
                     //PubSub.publish( 'notifications', {
                     //    msg: err.errorDescription || 'An error occurred, please try again',

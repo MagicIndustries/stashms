@@ -8,7 +8,7 @@ angular.module( 'stashpoc', [
     'context',
     'user',
     'stash',
-    'conversations'
+    'message'
 ] )
 
     .config( function ( $stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, $mdIconProvider ) {
@@ -60,7 +60,11 @@ angular.module( 'stashpoc', [
             .icon('menu', 'img/icons/ic_menu_24px.svg')
             .icon('more', 'img/icons/ic_more_vert_24px.svg')
             .icon('search', 'img/icons/ic_search_24px.svg')
-            .icon('add', 'img/icons/ic_add_24px.svg');
+            .icon('add', 'img/icons/ic_add_24px.svg')
+            .icon('send', 'img/icons/send.svg')
+            .icon('delete', 'img/icons/ic_delete_24px.svg')
+            .icon('fileMsg', 'img/icons/attachment.svg')
+            .icon('textMsg', 'img/icons/comment-text-outline.svg');
 
         $stateProvider
             .state( 'login', {
@@ -73,13 +77,13 @@ angular.module( 'stashpoc', [
                     }
                 }
             } )
-            .state( 'conversations', {
-                url:          '/conversations',
+            .state( 'messageList', {
+                url:          '/messageList',
                 authenticate: true,
                 views:        {
                     'body@':   {
-                        templateUrl: 'app/conversations/conversations.html',
-                        controller:  'ConversationsCtrl as vm'
+                        templateUrl: 'app/message/messageList.html',
+                        controller:  'MessageListCtrl as vm'
                     }
                 }
             } )
@@ -88,7 +92,7 @@ angular.module( 'stashpoc', [
                 authenticate: true,
                 views:        {
                     'body@':   {
-                        templateUrl: 'app/conversations/message.html',
+                        templateUrl: 'app/message/message.html',
                         controller:  'MessageViewCtrl as vm'
                     }
                 }
@@ -98,11 +102,11 @@ angular.module( 'stashpoc', [
                 authenticate: true,
                 views:        {
                     'body@':   {
-                        templateUrl: 'app/conversations/compose.html',
+                        templateUrl: 'app/message/compose.html',
                         controller:  'ComposeCtrl as vm'
                     }
                 }
-            } )
+            } );
 
         // default route to login
         $urlRouterProvider.otherwise( '/login' );

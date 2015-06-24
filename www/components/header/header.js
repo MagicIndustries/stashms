@@ -9,7 +9,7 @@
                 },
                 replace: true,
                 restrict: 'E',
-                controller: function ( $scope, Context, AuthTokenFactory, Auth ) {
+                controller: function ( $scope, Context, AuthTokenFactory, Auth, $state ) {
                     $scope.doLogout = logout;
                     //$scope.search = search;
                     //$scope.toggleSideNav = toggleSideNav;

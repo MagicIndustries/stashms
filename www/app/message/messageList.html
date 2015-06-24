@@ -1,0 +1,16 @@
+<md-list>
+    <md-list-item
+            class="md-2-line"
+            ng-click="vm.viewMessage( msg.MESSAGEID, $event )"
+            ng-repeat="msg in vm.aList">
+        <md-icon md-svg-icon="textMsg" ng-if="msg.TYPE==='text/plain'"></md-icon>
+        <md-icon md-svg-icon="fileMsg" ng-if="msg.TYPE!=='text/plain'"></md-icon>
+        <div class="md-list-item-text" style="flex-display:row !important;" flex >
+            <span class="md-body-2">{{msg.TS.$date | date : 'MMMM dd - HH:mm.ss'}}</span><br/>
+            <span class="md-caption">{{msg.ORIGINATOR}}</span>
+            <span class="md-caption">{{msg.STATE}}</span>
+        </div>
+        <md-icon md-svg-icon="delete" ng-click="vm.delete( msg.MESSAGEID, $event )"></md-icon>
+        <md-divider></md-divider>
+    </md-list-item>
+</md-list>
