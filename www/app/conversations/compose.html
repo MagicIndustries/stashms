@@ -1,0 +1,29 @@
+<div layout="column">
+    <md-content layout-padding>
+        <form name="msgForm" ng-submit="vm.send(msgForm)">
+            <md-input-container>
+                <label>Recipient's Email Address</label>
+                <input name="recipient" ng-model="vm.msgData.recipient" required >
+                <div ng-messages="msgForm.recipient.$error" role="alert" ng-if="msgForm.recipient.$dirty">
+                    <div ng-message="required">Recipient Email Address is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Message</label>
+                <textarea name="message" ng-model="vm.msgData.msg" columns="1" md-maxlength="150" required></textarea>
+                <div ng-messages="msgForm.message.$error" ng-if="msgForm.message.$dirty">
+                    <div ng-message="required">Message is required.</div>
+                </div>
+            </md-input-container>
+            <md-checkbox name="autoExpire" aria-label="Auto Expire?" ng-model="vm.msgData.autoExpire" class="md-primary">
+                Auto-Expire?
+            </md-checkbox>
+            <br/>
+            <md-divider></md-divider>
+            <br/>
+            <div layout="row" layout-align="end center">
+                <md-button type="submit" class="md-raised md-primary" >Send</md-button>
+            </div>
+        </form>
+    </md-content>
+</div>

@@ -1,0 +1,18 @@
+<md-content layout-padding class="login-form">
+    <form name="loginForm">
+        <div layout="column" layout-align="center center">
+            <h2 layout-align="center">Stash POC</h2>
+            <br/><br/>
+            <md-input-container>
+                <label>Email</label>
+                <input ng-model="vm.oLoginData.email">
+            </md-input-container>
+            <md-input-container>
+                <label>Passphrase</label>
+                <input ng-model="vm.oLoginData.passphrase">
+            </md-input-container>
+            <br/><br/>
+            <md-button class="md-raised md-primary" ng-click="vm.doLogin()">Login</md-button>
+        </div>
+    </form>
+</md-content>

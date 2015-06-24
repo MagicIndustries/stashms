@@ -1,0 +1,19 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSideNav()">
+            <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <h2>
+            <span>{{contextData.appTitle}}</span>
+        </h2>
+        <span flex></span>
+        <md-dropmenu>
+            <md-drop-label>
+                <md-button class="md-icon-button" aria-label="Menu">
+                    <md-icon md-svg-icon="more"></md-icon>
+                </md-button>
+            </md-drop-label>
+            <md-drop-option ng-click="doLogout()">Logout</md-drop-option>
+        </md-dropmenu>
+    </div>
+</md-toolbar>
