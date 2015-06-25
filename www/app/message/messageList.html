@@ -7,10 +7,13 @@
         <md-icon md-svg-icon="fileMsg" ng-if="msg.TYPE!=='text/plain'"></md-icon>
         <div class="md-list-item-text" style="flex-display:row !important;" flex >
             <span class="md-body-2">{{msg.TS.$date | date : 'MMMM dd - HH:mm.ss'}}</span>
-            &nbsp;&nbsp;<span class="md-caption">{{msg.STATE}}</span><br/>
+            &nbsp;&nbsp;<span class="md-caption">{{msg.STATE}}</span><br/
             <span class="md-caption">{{msg.ORIGINATOR}}</span>
         </div>
         <md-icon md-svg-icon="delete" ng-click="vm.delete( msg.MESSAGEID, $event )"></md-icon>
         <md-divider></md-divider>
     </md-list-item>
 </md-list>
+<md-button class="md-fab md-fab-bottom-right" aria-label="New Message" ng-click="vm.newMsg()">
+    <md-icon md-svg-icon="add"></md-icon>
+</md-button>

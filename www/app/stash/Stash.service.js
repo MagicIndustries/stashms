@@ -14,7 +14,8 @@
           }, function ( err ) {
               PubSub.publish( 'notifications', {
                   type: 'danger',
-                  msg: 'An Error has occurred - could not establish a secure session',
+                  msg: 'An Error has occurred',
+                  detail: err.data.MESSAGE,
                   err: err
               });
           });
@@ -26,7 +27,7 @@
           }, function ( err ) {
               PubSub.publish( 'notifications', {
                   type: 'danger',
-                  msg: 'An Error has occurred while attempting to retrieve your message list',
+                  msg: 'An Error has occurred',
                   detail: err.data.MESSAGE,
                   err: err
               });
@@ -63,7 +64,8 @@
             }, function ( err ) {
                 PubSub.publish( 'notifications', {
                     type: 'danger',
-                    msg: 'An Error has occurred while attempting to retrieve your message',
+                    msg: 'An Error has occurred',
+                    detail: err.data.MESSAGE,
                     err: err
                 });
             });
@@ -81,7 +83,8 @@
             }, function ( err ) {
                 PubSub.publish( 'notifications', {
                     type: 'danger',
-                    msg: 'An Error has occurred while attempting to delete your message',
+                    msg: 'An Error has occurred',
+                    detail: err.data.MESSAGE,
                     err: err
                 });
             })
