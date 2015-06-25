@@ -1,6 +1,9 @@
 angular.module( 'message' )
-    .controller( 'MessageViewCtrl', function ( $rootScope, Stash ) {
+    .controller( 'MessageViewCtrl', function ( $rootScope, Stash, $stateParams ) {
         var vm = this;
-        vm.stashData = Stash.data;
+
+        Stash.getMessage( $stateParams.msgID ).then( function ( response ) {
+            vm.msg = response;
+        });
 
     } );

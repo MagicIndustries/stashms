@@ -1,3 +1,4 @@
-<div>
-    {{vm.stashData.currentMsg}}
-</div>
+<md-content layout="column">
+    <h5 class="md-title">{{vm.msg.TS.$date | date : 'MMMM dd - HH:mm.ss'}}</h5>
+    <p>{{vm.msg.MESSAGE}}</p>
+</md-content>

@@ -1,0 +1,12 @@
+.growl-container > .growl-item.ng-enter {
+  -webkit-transition:0s linear all;
+  -moz-transition:0s linear all;
+  -o-transition:0s linear all;
+  transition:0s linear all;
+}
+.growl-container > .growl-item.ng-leave {
+  -webkit-transition:1s linear all;
+  -moz-transition:1s linear all;
+  -o-transition:1s linear all;
+  transition:1s linear all;
+}

@@ -3,12 +3,16 @@ angular.module( 'stashpoc', [
     'ngAria',
     'ngMaterial',
     'ngMaterialDropmenu',
+    'globals',
     'auth',
     'header',
     'context',
     'user',
     'stash',
-    'message'
+    'message',
+    'pubsub',
+    'ngLodash',
+    'notifications'
 ] )
 
     .config( function ( $stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, $mdIconProvider ) {
@@ -63,6 +67,11 @@ angular.module( 'stashpoc', [
             .icon('add', 'img/icons/ic_add_24px.svg')
             .icon('send', 'img/icons/send.svg')
             .icon('delete', 'img/icons/ic_delete_24px.svg')
+            .icon('info', 'img/icons/information-outline.svg')
+            .icon('warn', 'img/icons/flag.svg')
+            .icon('success', 'img/icons/check.svg')
+            .icon('danger', 'img/icons/radioactive.svg')
+            .icon('close', 'img/icons/close.svg')
             .icon('fileMsg', 'img/icons/attachment.svg')
             .icon('textMsg', 'img/icons/comment-text-outline.svg');
 
@@ -88,7 +97,7 @@ angular.module( 'stashpoc', [
                 }
             } )
             .state( 'message', {
-                url:          '/message',
+                url:          '/message/:msgID',
                 authenticate: true,
                 views:        {
                     'body@':   {

@@ -17,6 +17,7 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/ng-lodash/build/ng-lodash.js"></script>
     <script src="lib/angular-material/angular-material.js"></script>
     <script src="lib/ng-material-dropmenu/ng-material-dropmenu.js"></script>
 
@@ -26,7 +27,11 @@
       <script src="app/user/user.module.js"></script>
       <script src="app/stash/stash.module.js"></script>
       <script src="app/message/message.module.js"></script>
+      <script src="components/global/globals.module.js"></script>
+      <script src="components/pubsub/pubsub.module.js"></script>
+      <script src="components/notifications/notifications.module.js"></script>
 
+      <script src="components/global/Globals.service.js"></script>
       <script src="app/context/Context.service.js"></script>
       <script src="app/auth/Auth.service.js"></script>
       <script src="app/auth/AuthCtrl.js"></script>
@@ -38,6 +43,9 @@
       <script src="app/message/MessageListCtrl.js"></script>
       <script src="app/message/MessageViewCtrl.js"></script>
       <script src="app/message/ComposeCtrl.js"></script>
+      <script src="components/pubsub/PubSub.service.js"></script>
+      <script src="components/notifications/notifications.directive.js"></script>
+      <script src="components/notifications/ToastCtrl.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -45,7 +53,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-controller="BaseCtrl as vm">
+  <body ng-controller="BaseCtrl as vm" notifications>
       <header ng-if="vm.authData.bLoggedIn && !vm.bHideHeader"></header>
       <sidenav></sidenav>
       <div ui-view="body"></div>
@@ -58,8 +66,5 @@
           <!--resting-icon="ic_add_24px.svg"-->
           <!--ng-click="vm.newMsg()">-->
       <!--</nav>-->
-      <md-button class="md-fab md-fab-bottom-right" aria-label="New Message" ng-click="vm.newMsg()">
-          <md-icon md-svg-icon="add"></md-icon>
-      </md-button>
   </body>
 </html>

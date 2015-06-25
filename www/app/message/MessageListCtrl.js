@@ -1,10 +1,15 @@
 (function () {
     'use strict';
     angular.module( 'message' )
-        .controller( 'MessageListCtrl', function ( $rootScope, Stash, $state, Context ) {
+        .controller( 'MessageListCtrl', function ( $rootScope, Stash, $state, Context, PubSub ) {
             var vm = this;
             vm.viewMessage = viewMessage;
             vm.delete = deleteMessage;
+            vm.newMsg = newMsg;
+
+            function newMsg () {
+                $state.go( 'compose' );
+            }
 
             Context.setAppTitle( 'Messages' );
 
@@ -18,18 +23,26 @@
 
             function viewMessage ( msgID ) {
                 Stash.getMessage( msgID ).then( function ( result ) {
-                    //TODO: PUBSUB message
-                  $state.go( 'message' );
-                });//TODO: handle error
+                  $state.go( 'message', { msgID: msgID } );
+                });
             }
 
             function deleteMessage ( msgID, $event ) {
                 $event.preventDefault();
                 $event.stopPropagation();
               Stash.remove( msgID ).then( function ( result ) {
-                  //TODO: PUBSUB message
+                  PubSub.publish( 'notifications', {
+                      type: 'success',
+                      msg: 'Message Deleted'
+                  });
                   getMessageList();
-              })//TODO: handle error
+              }, function ( err ) {
+                  PubSub.publish( 'notifications', {
+                      type: 'danger',
+                      msg: 'An error occurred while attempting to delete the message',
+                      err: err
+                  });
+              })
             }
 
         })

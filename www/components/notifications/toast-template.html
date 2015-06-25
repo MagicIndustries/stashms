@@ -1,0 +1,11 @@
+<md-toast>
+    <md-icon
+            md-svg-icon="{{msg.icon}}"
+            style="width: 20px; height: 20px; color: {{::msg.iconColor}}; margin-right: 10px;"></md-icon>
+    <span flex style="color:#FFFFFF;"><strong>{{::msg.msg}}</strong><br/>{{::msg.detail}}</span>
+    <md-icon
+            md-svg-icon="close"
+            class="md-secondary md-action"
+            ng-click="closeToast()"
+            style="width: 20px; height: 20px; color: #FFFFFF; cursor:pointer;"></md-icon>
+</md-toast>
